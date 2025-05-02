@@ -23,3 +23,7 @@
 - model_dump: dict로 반환
     - 함수 내에서 pydantic을 바꾸긴 어려울 때, dict로 변환해서 업데이트 후 반환
 - path params, request body, query params 을 넣어 PUT을 사용하는 실습
+
+5. Requests/main_rbody_js.py
+- JavaScript 를 통해 동적으로 값을 호출하는 방식
+- http://localhost:8081/static/rbody.html
