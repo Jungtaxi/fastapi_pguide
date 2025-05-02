@@ -12,6 +12,7 @@ class Item(BaseModel):
     price: float
     tax: float | None = None
     #tax: Optional[float] = None
+    nickname: str | None = None
 
     
 
@@ -27,14 +28,17 @@ async def create_item(item: Item):
 @app.post("/items_tax/")
 async def create_item_tax(item: Item):
     item_dict = item.model_dump()
-    print("#### item_dict:", item_dict)
+    print("###### item_dict:", item_dict)
+    print("###### item:", item)
+    # pydantic을 업데이트 할 수는 없고, dict로 변환해서 업데이트
     if item.tax:
         price_with_tax = item.price + item.tax
         item_dict.update({"price_with_tax": price_with_tax})
     
-    return item_dict   
+    return item_dict
 
 # Path, Query, Request Body 모두 함께 적용. 
+# item_id 는 path params, item은 request body, q는 query params
 @app.put("/items/{item_id}")
 async def update_item(item_id: int, item: Item, q: str | None = None):
     result = {"item_id": item_id, **item.model_dump()}
@@ -55,6 +59,5 @@ class User(BaseModel):
 @app.put("/items_mt/{item_id}")
 async def update_item_mt(item_id: int, item: Item, user: User):
     results = {"item_id": item_id, "item": item, "user": user}
-    print("results:", results)
+    print("###### results:", results)
     return results
-
