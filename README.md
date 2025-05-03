@@ -27,3 +27,9 @@
 5. Requests/main_rbody_js.py
 - JavaScript 를 통해 동적으로 값을 호출하는 방식
 - http://localhost:8081/static/rbody.html
+
+6. Requests/main_form.py
+- 인자 마다 form으로 받아줌  
+- json으로 받아서 할지, form을 쓸 지. EndPoint를 달리하는게 낫다.
+- Optional
+    - Annotated[str, Form()] = None
