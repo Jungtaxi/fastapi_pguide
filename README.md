@@ -33,3 +33,9 @@
 - json으로 받아서 할지, form을 쓸 지. EndPoint를 달리하는게 낫다.
 - Optional
     - Annotated[str, Form()] = None
+
+7. Requests/main_request.py
+- FastAPI에서 다루는 Request 객체 실습
+- 비동기로 form 또는 json을 받을 수 있음
+    - await request.json()
+    - await request.form()
